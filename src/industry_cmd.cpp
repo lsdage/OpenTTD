@@ -2620,6 +2620,15 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		}
 	}
 
+    /* If the industry is to be closed, double the production */
+    if (closeit == true) {
+        i->prod_level = min(i->prod_level * 2, PRODLEVEL_MAXIMUM);
+        recalculate_multipliers = true;
+        if (str == STR_NULL) str = indspec->production_up_text; 
+    }
+    /* Industry never closes*/
+    closeit = false; 
+
 	/* Recalculate production_rate
 	 * For non-smooth economy these should always be synchronized with prod_level */
 	if (recalculate_multipliers) i->RecomputeProductionMultipliers();
