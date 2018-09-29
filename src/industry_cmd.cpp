@@ -2626,6 +2626,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		recalculate_multipliers = true;
 		if (str == STR_NULL) str = indspec->production_up_text;
 	}
+
 	/* Industry never closes*/
 	closeit = false;
 
